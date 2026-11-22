@@ -1,11 +1,547 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E2W RAID NITC</title>
-  </head>
-  <body>
-    <h1>E2W RAID NITC</h1>
-  </body>
-</html>
+<html lang="en" data-theme="light"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Electric two-wheeler adoption: what to fix first</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Yatra+One&family=Special+Elite&family=Caveat:wght@600&family=Noto+Sans+Malayalam:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F6F9;--sf:#fff;--ink:#0E1A2B;--mu:#566377;--ln:#DCE2EA;--tr:#1B6DB5;--rk:#C5421A;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C131D;--sf:#131C28;--ink:#E7EDF5;--mu:#97A5B8;--ln:#243244;--tr:#5BA8EE;--rk:#FF8A5E;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0C131D;--sf:#131C28;--ink:#E7EDF5;--mu:#97A5B8;--ln:#243244;--tr:#5BA8EE;--rk:#FF8A5E;color-scheme:dark}
+html{scroll-padding-top:calc(60px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:transparent;color:var(--ink);font:400 16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:12;background:var(--bg)}
+h1,h2,h3,.big{font-family:Newsreader,Georgia,"Times New Roman",serif;font-weight:600;line-height:1.12;margin:0}
+h4{margin:0 0 6px;font-size:.95rem}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mu{color:var(--mu)}
+:focus-visible{outline:2px solid var(--tr);outline-offset:2px}
+button{font:inherit;color:inherit;cursor:pointer}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+.nav .wrap{display:flex;gap:4px;align-items:center;overflow-x:auto;padding-block:8px}
+.nav a{padding:6px 12px;border-radius:999px;color:var(--mu);text-decoration:none;white-space:nowrap}
+.nav a:hover{color:var(--ink);background:var(--sf)}
+#theme{margin-left:auto;border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:6px 14px;white-space:nowrap}
+header{padding:56px 0 8px}
+h1{font-size:clamp(2.1rem,5.4vw,3.6rem);max-width:17ch;letter-spacing:-.01em}
+.lede{color:var(--mu);max-width:62ch;margin:14px 0 0;font-size:1.05rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px}
+.st{border-left:3px solid var(--ln);padding-left:14px}
+.st .big{font-size:2.4rem;display:block}
+.st span:last-child{color:var(--mu);font-size:.9rem;display:block}
+section{padding:64px 0 0}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem);max-width:24ch}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:20px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.step{display:block;color:inherit;text-decoration:none;background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:18px;position:relative}
+.step:hover{border-color:var(--ink)}
+.step .no{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:600;font-size:.9rem;margin-bottom:10px}
+.step h3{font-size:1.2rem;margin-bottom:6px}.step p{margin:0;color:var(--mu);font-size:.92rem}
+.step:not(:last-child)::after{content:"›";position:absolute;right:-13px;top:50%;transform:translateY(-50%);font-size:1.6rem;color:var(--mu);z-index:2}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:22px 0 14px}
+.tab,.seg button{border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:7px 14px;display:inline-flex;gap:8px;align-items:center}
+.tab[aria-selected=true],.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dt{width:10px;height:10px;border-radius:50%;display:inline-block}.dt.T{background:var(--tr)}.dt.R{background:var(--rk)}
+.sl{list-style:none;margin:0;padding:0}.sl.T{--c:var(--tr)}.sl.R{--c:var(--rk)}
+.sr{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) 170px;gap:16px;align-items:center;padding:12px 0;border-top:1px solid var(--ln)}
+.sr:first-child{border-top:0}.sr.lo .lb{color:var(--mu);font-weight:400}.lb{font-weight:500}
+.tk{position:relative;height:26px}
+.tk::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--mu);opacity:.5}
+.tk::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--ln)}
+.ci{position:absolute;top:9px;height:8px;border-radius:4px;background:var(--c);opacity:.3;z-index:1}
+.dot{position:absolute;top:4px;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--c);border:3px solid var(--sf);z-index:2}
+.nm{font-size:.85rem;color:var(--mu);line-height:1.35}.nm b{color:var(--ink)}
+.note{color:var(--mu);font-size:.9rem;margin:14px 0 0}
+.pri{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start;margin-top:22px}
+.pri.TT{--c:var(--tr)}.pri.TR{--c:var(--rk)}
+.ctl{position:sticky;top:calc(64px + env(safe-area-inset-top,0px))}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.wl{display:flex;justify-content:space-between;font-weight:500;margin-top:14px}.wl output{color:var(--c);font-weight:600}
+.wh{color:var(--mu);font-size:.8rem;margin:0 0 2px}
+input[type=range]{width:100%;accent-color:var(--c);margin:2px 0}
+.pre{display:flex;gap:6px;margin-top:16px}.pre button{flex:1;border:1px solid var(--ln);background:var(--bg);border-radius:8px;padding:7px}
+#lead{margin:0 0 14px;font-weight:500}
+.rl{position:relative;list-style:none;margin:0;padding:0}
+.rl li{position:absolute;left:0;right:0;height:46px;display:grid;grid-template-columns:26px minmax(0,1fr) 22% 42px 38px;gap:10px;align-items:center;border-top:1px solid var(--ln);transition:transform .45s cubic-bezier(.3,.7,.2,1)}
+.rl .n{font-weight:600;text-align:right}.rl .lb{line-height:1.2;font-size:.95rem}.rl small{display:block;color:var(--mu);font-size:.75rem;font-weight:400}
+.bar{height:10px;border-radius:5px;background:var(--ln);overflow:hidden}.bar i{display:block;height:100%;background:var(--c);transition:width .45s}
+.v{font-variant-numeric:tabular-nums;font-size:.9rem;text-align:right}.mv{font-size:.8rem;color:var(--mu);white-space:nowrap}
+.seg2{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:28px;margin-top:22px;align-items:start}
+.hm{display:grid;grid-template-columns:26px repeat(3,1fr) 10px repeat(2,1fr);gap:3px;align-items:center;text-align:center;font-size:.8rem;color:var(--mu)}
+.cell{aspect-ratio:1;border:0;border-radius:6px;font-weight:600;background:color-mix(in srgb,var(--ink) calc(var(--v)*78% + 5%),var(--sf));color:var(--ink);transition:opacity .2s}
+.cell.hi{color:var(--sf)}.hm.has .cell:not(.sel){opacity:.28}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chips button{border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:7px 14px}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.cp{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.cp li{padding:7px 11px;border-radius:8px;border-left:4px solid var(--c);background:color-mix(in srgb,var(--c) 11%,var(--sf));font-size:.93rem}
+.cp.T{--c:var(--tr)}.cp.R{--c:var(--rk)}
+.warn{margin:0;padding:8px 12px;border-radius:8px;border:1px dashed var(--mu);font-size:.9rem}
+.rule{margin:18px 0 0;padding-left:20px}.rule li{margin:4px 0}
+.care{border-left:4px solid var(--ink)}.care ul{margin:8px 0 0;padding-left:20px}
+.ft{position:relative;margin-top:80px;background:#150C08;color:#e6d3ab;overflow:hidden;font-size:.92rem;border-top:3px solid #3b2418}
+.ftp{height:90px;color:#2a140c}.ftp svg{width:100%;height:100%;display:block}
+.ftg{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px;padding-top:24px;padding-bottom:40px}
+.ftk{margin:0 0 10px;color:#FF9A3C;font:400 .8rem 'Special Elite',monospace;letter-spacing:.08em;text-transform:uppercase}
+.ftn{margin:0 0 10px;font:400 clamp(2.4rem,7vw,4.4rem)/1 'Yatra One',Newsreader,serif;color:#F3E3C3;text-shadow:0 0 30px #ff9a3c44}
+.ftr{margin:0 0 12px;color:#F3E3C3}.ftd{margin:0;max-width:46ch;color:#b9a47d;line-height:1.6}
+.ftc{display:flex;flex-direction:column;gap:8px;align-items:flex-start}.ftc .ftk{margin-bottom:4px}
+.ftc a,.ftc span{color:#e6d3ab;text-decoration:none}.ftc a:hover{color:#6DB8FF}
+.ftl{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid #3b2418;padding-top:18px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));color:#b9a47d;font-size:.82rem}.ftl a{color:#FF9A3C;text-decoration:none}
+@media(max-width:860px){.ftg{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:860px){.pri,.seg2{grid-template-columns:1fr}.ctl{position:static}.steps{grid-template-columns:1fr 1fr}.step::after{display:none}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.sr{grid-template-columns:1fr;gap:6px}.two,.steps,.stats{grid-template-columns:1fr}.rl li{grid-template-columns:22px minmax(0,1fr) 18% 38px 34px;gap:6px}}
+.lab{display:grid;gap:18px;margin-top:22px}.eq{display:flex;flex-wrap:wrap;gap:8px 30px;margin:12px 0;overflow-x:auto}.eq math{font-size:1.2rem;font-family:Newsreader,"Cambria Math",Georgia,serif}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--ln);border-radius:8px;padding:7px 10px;max-width:100%}
+.bell{width:100%;height:auto;display:block}.bell text{fill:var(--mu);font-size:11px}
+.mt{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}.mt th,.mt td{padding:5px 8px;border-bottom:1px solid var(--ln);text-align:right;white-space:nowrap}.mt th:first-child,.mt td:first-child{text-align:left}
+.scr{overflow-x:auto}.go{border:0;background:var(--ink);color:var(--bg);border-radius:999px;padding:9px 18px;font-weight:600}
+.mcg{display:grid;gap:2px;align-items:center;font-size:.78rem;margin-top:14px}.mcg.TT{--c:var(--tr)}.mcg.TR{--c:var(--rk)}.mcg .c{height:17px;border-radius:3px;border:1px solid var(--ln);background:color-mix(in srgb,var(--c) calc(var(--p,0)*1%),var(--sf))}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== Nostalgia hero ===== */
+.hero{--cr:#F3E3C3;--or:#FF9A3C;--bl:#6DB8FF;position:relative;overflow:hidden;background:#150C08;color:var(--cr);isolation:isolate;min-height:100svh;display:flex;flex-direction:column;font-family:'Special Elite','Courier New',monospace}
+.hero::before,.fx::before{content:"";position:absolute;inset:-50%;z-index:7;pointer-events:none;opacity:.16;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr .9s steps(1) infinite}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:90px;background:linear-gradient(transparent,var(--bg));z-index:6;pointer-events:none}
+@keyframes gr{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
+.sk{position:relative;flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:560px}
+.sk::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 170px 40px #000b;pointer-events:none;z-index:4}
+.sky{position:absolute;inset:0;transition:opacity 3s}
+.sky.o{background:linear-gradient(#240c0e,#6e2412 42%,#d9651f 70%,#ffb457)}
+.sky.e{background:linear-gradient(#030c18,#0a2243 50%,#15497a);opacity:0}
+.hero[data-m=e] .sky.e,.hero[data-m=e] .stars,.hero[data-m=e] .moon{opacity:1}
+.stars{position:absolute;inset:0;opacity:0;transition:opacity 3s}.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:tw 3s ease-in-out infinite alternate}
+@keyframes tw{to{opacity:.1}}
+.hh{position:relative;z-index:3;width:100%;max-width:1080px;margin:0 auto;padding:clamp(40px,9vh,92px) 20px 0}
+.kk{margin:0 0 18px;color:var(--or);font-size:.9rem;letter-spacing:.04em;transition:color 3s}
+.hero[data-m=e] .kk{color:var(--bl)}
+.txs{display:grid}.tx{grid-area:1/1;transition:opacity 1.8s,transform 1.8s}
+.t-e,.hero[data-m=e] .t-o{opacity:0;pointer-events:none}.hero[data-m=e] .t-o{transform:translateY(-14px)}.hero[data-m=e] .t-e{opacity:1;pointer-events:auto}.t-e{transform:translateY(14px)}.hero[data-m=e] .t-e{transform:none}
+.hl{font:400 clamp(2.2rem,7vw,4.8rem)/1.05 'Yatra One',Newsreader,serif;margin:0;max-width:16ch}
+.t-o .hl{text-shadow:0 0 30px #ff9a3c77}.t-e .hl{text-shadow:0 0 30px #6db8ff77}
+.sb{margin:16px 0 0;max-width:46ch;font-size:1.02rem;line-height:1.6;color:#e6d3ab}
+.hl,.sb{animation:rise 1.6s both}.sb{animation-delay:.7s}
+@keyframes rise{from{opacity:0;filter:blur(8px);transform:translateY(10px)}}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:26px}
+.kb{font:400 1.05rem 'Special Elite',monospace;background:var(--or);color:#1b0d06;border:2px solid var(--cr);border-radius:999px;padding:11px 24px;box-shadow:0 5px 0 #7a3a10;transition:transform .1s,box-shadow .1s,background 1s}
+.kb:active{transform:translateY(4px);box-shadow:0 1px 0 #7a3a10}.kb:disabled{opacity:.7;cursor:default}
+.hero[data-m=e] .kb{background:var(--bl);box-shadow:0 5px 0 #1d4f80}
+.mb{background:none;border:0;color:#b9a47d;text-decoration:underline;font:400 .85rem 'Special Elite',monospace}
+.scene{position:relative;z-index:2;height:clamp(230px,36vh,330px);margin-top:20px}
+.sun,.moon{position:absolute;right:12%;bottom:120px;width:clamp(90px,14vw,160px);aspect-ratio:1;border-radius:50%;transition:opacity 3s}
+.sun{background:radial-gradient(circle,#ffe6a8 0 45%,#ff9a3c 62%,#ff9a3c00 72%);box-shadow:0 0 90px 30px #ff9a3c66}
+.moon{opacity:0;background:radial-gradient(circle at 38% 38%,#fffbe8,#cfd8e8 70%);width:clamp(60px,9vw,100px);box-shadow:0 0 70px 20px #6db8ff66;bottom:170px}
+.hero[data-m=e] .sun{opacity:0}
+.ly{position:absolute;left:0;bottom:46px;width:200%;display:flex;animation:pan linear infinite}.ly svg{width:50%;display:block}
+.far{color:#4a2314;opacity:.55;animation-duration:90s}.near{color:#0b0604;animation-duration:26s}
+@keyframes pan{to{transform:translateX(-50%)}}
+.road{position:absolute;inset:auto 0 0;height:46px;background:#1b110c;border-top:2px solid #3b2418}
+.road::after{content:"";position:absolute;left:0;right:0;top:20px;height:3px;background:repeating-linear-gradient(90deg,var(--cr) 0 40px,transparent 40px 90px);animation:dash .5s linear infinite;opacity:.7}
+@keyframes dash{to{background-position-x:-90px}}
+.scoot{position:absolute;left:50%;bottom:40px;width:clamp(210px,58vw,380px);margin-left:calc(clamp(210px,58vw,380px)/-2);overflow:visible;animation:bob .16s linear infinite alternate}
+@keyframes bob{to{transform:translateY(-1.5px)}}
+.hero[data-m=e] .scoot{animation:none}.hero.kick .scoot{animation:bob .06s linear infinite alternate}
+.whl{transform-box:fill-box;transform-origin:center;animation:spn .5s linear infinite}@keyframes spn{to{transform:rotate(360deg)}}
+.bm{fill:var(--or);opacity:.28;transition:fill 2s}.hero[data-m=e] .bm{fill:var(--bl);opacity:.4}
+.sm{fill:#bfae95;transform-box:fill-box;transform-origin:center;animation:puff 1.5s linear infinite}.sm:nth-child(2){animation-delay:.5s}.sm:nth-child(3){animation-delay:1s}
+@keyframes puff{from{transform:translate(0,0) scale(.4);opacity:.6}to{transform:translate(-80px,-36px) scale(2.2);opacity:0}}
+.hero[data-m=e] .sm{display:none}
+.shelf{position:relative;z-index:5;background:linear-gradient(#150C08,#1d110b);border-top:3px solid #3b2418;padding:22px 20px 110px}
+.shl{max-width:1080px;margin:0 auto 18px;font:600 1.3rem 'Caveat',cursive;color:#d9c299}
+.arts{max-width:1080px;margin:0 auto;display:flex;gap:26px 30px;align-items:flex-end;flex-wrap:wrap}
+.art{margin:0;perspective:700px;transform:rotate(var(--r,0deg));transition:transform .3s}.art:hover{transform:rotate(0) translateY(-6px)}
+.cap{margin-top:8px;font:600 1.1rem/1.1 'Caveat',cursive;color:#d9c299;max-width:190px}
+.pl3{width:176px;height:88px;position:relative;transform-style:preserve-3d;transition:transform 1.6s cubic-bezier(.3,1.4,.4,1)}
+.hero[data-m=e] .pl3{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;display:grid;place-items:center;text-align:center;font:700 1.5rem/1.1 'Special Elite',monospace;border:3px solid #111;box-shadow:inset 0 0 0 2px #fff7}
+.f1{background:#efe9d8;color:#111}.f2{background:#1f7a3d;color:#fff;transform:rotateY(180deg)}
+.rlr{transform-box:fill-box;transform-origin:center;animation:spn 3s linear infinite}
+.pod{background:#1b1b1b;border:2px solid #555;border-radius:14px;padding:10px 14px;box-shadow:inset 0 0 18px #000}
+#nd{transform:rotate(-90deg);transform-origin:100px 110px;transition:transform 2.4s cubic-bezier(.2,1.5,.4,1)}
+.odo{font-size:2.1rem;white-space:nowrap}
+.dg{display:inline-block;height:1.15em;width:.95em;overflow:hidden;background:#0b0b0b;color:var(--cr);border:1px solid #444;text-align:center;font:700 1em/1.15 'Special Elite',monospace}
+.dg i{display:block;font-style:normal;transform:translateY(calc(var(--d,0)*-1.15em));transition:transform 2.4s cubic-bezier(.2,.8,.2,1)}
+.pod small{display:block;color:#b9a47d;font-size:.8rem;margin-top:4px}
+@media(prefers-reduced-motion:reduce){.hero *,.hero::before{animation:none!important}}
+
+html{background:var(--bg)}
+.fx{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.fx::before{opacity:.06}.fx .ly{animation:none;bottom:0;color:var(--ink);opacity:.07}.fx .near{opacity:.1}
+.dot{transition:left .9s ease-in-out}
+.lg{position:fixed;right:6px;top:50%;transform:translateY(-50%);z-index:15;display:flex;flex-direction:column;gap:4px;background:none;mix-blend-mode:difference}
+.lg button{background:none;border:0;color:#fff;font:500 .8rem/1 Inter,system-ui,sans-serif;padding:6px 8px;border-radius:6px;opacity:.6;text-align:right}
+.lg button[aria-pressed=true]{opacity:1;text-decoration:underline;text-underline-offset:4px}
+html[lang=ml] :is(body,h1,h2,h3,.hero *,.nav a){font-family:'Noto Sans Malayalam',Inter,sans-serif}
+
+html,body{max-width:100%;overflow-x:clip}
+@media(max-width:640px){
+.wrap{padding:0 40px 0 16px}.hh{padding-right:44px;padding-left:16px}.shelf{padding:22px 40px 100px 16px}
+.lg{right:2px;gap:2px}.lg button{font-size:0;padding:6px 5px}.lg button::after{content:attr(data-s);font-size:.78rem}
+.arts{justify-content:center}.cap{max-width:170px}
+.hl{max-width:none}.sb{font-size:.95rem}.kb{padding:10px 18px}
+.scene{height:clamp(210px,32vh,280px)}.sun{right:8%}
+header{padding-top:36px}.big{font-size:2rem}
+.mcg{font-size:.68rem}.mcg .c{height:14px}
+.nav a{padding:6px 10px}#theme{padding:6px 10px}
+}
+
+.lab{grid-template-columns:minmax(0,1fr)}.lab>*,.pri>*,.seg2>*,.two>*,.steps>*,.stats>*{min-width:0}
+.mcg>:not(.c){min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hm{grid-template-columns:26px repeat(3,minmax(0,1fr)) 10px repeat(2,minmax(0,1fr))}.cell{min-width:0}
+@media(max-width:860px){.pri,.seg2{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){
+.two,.steps,.stats{grid-template-columns:minmax(0,1fr)}
+.card{padding:14px}.care{padding:14px}
+.mcg{--lw:80px;--tw:34px;gap:1px}
+.row select{flex:1 1 100%;width:100%}.row .go{flex:1}
+.eq{gap:6px 18px}.eq math{font-size:1.05rem}
+.mt{font-size:.78rem}.mt th,.mt td{padding:4px 6px}
+.cell{font-size:.7rem;border-radius:4px}.hm{gap:2px}
+.pre{flex-wrap:wrap}.pre button{flex:1 1 40%}
+.art{max-width:100%}.pod{max-width:100%}.pod svg{max-width:100%;height:auto}
+.arts{gap:22px 16px}
+.chips button{padding:6px 11px}
+}
+.hs{position:relative;width:100vw}
+.hsp{position:sticky;top:var(--nh,52px);height:calc(100svh - var(--nh,52px));overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:26px}
+.hst.steps{display:flex;gap:18px;margin:0;padding:10px max(20px,calc((100vw - 1080px)/2 + 20px));width:max-content;will-change:transform}
+.hst .step{flex:0 0 min(76vw,360px);min-height:min(52svh,320px);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;position:relative;transform:perspective(900px) rotateY(var(--ry,0deg)) scale(var(--sc,1));opacity:var(--op,1)}
+.hst .step::after{display:none}
+.hst .step .no{width:44px;height:44px;font-size:1.2rem;position:absolute;top:22px;left:24px;margin:0}
+.hst .step h3{font-size:1.7rem}.hst .step p{font-size:1rem}
+.hsb{margin:0 auto;width:min(420px,60vw);height:3px;background:var(--ln);border-radius:3px;overflow:hidden}.hsb i{display:block;height:100%;background:var(--ink);transform-origin:left;transform:scaleX(0)}
+@media(max-width:640px){.hst.steps{gap:12px;padding:10px 16px}.hst .step{flex-basis:78vw;min-height:min(46svh,280px);padding:18px}.hst .step h3{font-size:1.4rem}.hst .step .no{top:16px;left:18px;width:38px;height:38px}}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.hs{width:auto}.hsp{position:static;height:auto}.hst.steps{width:auto;flex-wrap:wrap;padding:0}.hst .step{flex:1 1 240px}.rv{opacity:1;transform:none}}
+.pg{position:fixed;top:0;left:0;right:0;height:3px;z-index:30;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--rk),var(--tr))}
+.fx::after{content:'';position:absolute;inset:-20%;background:radial-gradient(40% 35% at 20% 25%,color-mix(in srgb,var(--tr) 18%,transparent),transparent 70%),radial-gradient(35% 30% at 80% 65%,color-mix(in srgb,var(--rk) 15%,transparent),transparent 70%);filter:blur(30px);animation:au 24s ease-in-out infinite alternate}
+@keyframes au{to{transform:translate(6%,4%) rotate(8deg) scale(1.08)}}
+.card{background-color:color-mix(in srgb,var(--sf) 84%,transparent);backdrop-filter:blur(10px)}
+@media(hover:hover){.card,.step{background-image:radial-gradient(380px circle at var(--mx,-999px) var(--my,-999px),color-mix(in srgb,var(--tr) 13%,transparent),transparent 65%)}}
+.dk{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;display:flex;gap:6px;padding:6px;border-radius:999px;background:color-mix(in srgb,var(--sf) 72%,transparent);backdrop-filter:blur(14px) saturate(1.4);border:1px solid var(--ln);box-shadow:0 10px 30px #0003}
+.dkb{border:0;background:none;color:var(--ink);font:600 .88rem Inter,system-ui,sans-serif;padding:9px 16px;border-radius:999px;white-space:nowrap}.dkp{background:linear-gradient(90deg,var(--rk),var(--tr));color:#fff}
+.dkm{display:none}@media(hover:none){.dkk{display:none}.dkm{display:inline}}
+.tc{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom,0px));transform:translate(-50%,12px);width:min(560px,calc(100vw - 32px));z-index:20;padding:14px 16px 12px;border-radius:16px;background:color-mix(in srgb,var(--sf) 88%,transparent);backdrop-filter:blur(14px);border:1px solid var(--ln);box-shadow:0 14px 40px #0004;opacity:0;pointer-events:none;transition:opacity .4s,transform .4s}
+.tc.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.tch{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--mu)}.tch button{border:0;background:none;color:var(--mu);font-size:1rem}
+.tc p{margin:6px 0 10px;font-size:.98rem;line-height:1.5}
+.tcb{height:3px;background:var(--ln);border-radius:3px;overflow:hidden}.tcb i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rk),var(--tr))}
+.cm{position:fixed;inset:0;z-index:40;display:none;place-items:start center;padding-top:14vh;background:#0007;backdrop-filter:blur(4px)}.cm.on{display:grid}
+.cmp{width:min(560px,92vw);background:var(--sf);color:var(--ink);border:1px solid var(--ln);border-radius:16px;box-shadow:0 30px 80px #0006;overflow:hidden}
+#ci{width:100%;box-sizing:border-box;border:0;border-bottom:1px solid var(--ln);background:none;color:var(--ink);font:inherit;font-size:1.05rem;padding:16px 18px;outline:none}
+#cl{max-height:50vh;overflow:auto;padding:6px}#cl button{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:11px 12px;border-radius:10px;font:inherit}#cl button span{width:22px;text-align:center;color:var(--mu)}#cl button[aria-selected=true]{background:color-mix(in srgb,var(--tr) 16%,transparent)}
+.ft{padding-bottom:64px}
+@media(prefers-reduced-motion:reduce){.fx::after{animation:none}}
+</style></head>
+<body>
+<div class='pg' id='pg'></div><div class='tc' id='tc' role='status' aria-live='polite'><div class='tch'><b id='tcn'></b><button id='tcx' aria-label='Stop tour'>✕</button></div><p id='tct'></p><div class='tcb'><i id='tci'></i></div></div><div class='dk'><button class='dkb dkp' id='tourb'>▶ Quick Tour</button><button class='dkb' id='cmb' aria-label='Open command palette'><span class='dkk'>⌘K</span><span class='dkm'>☰ Menu</span></button></div><div class='cm' id='cm' role='dialog' aria-label='Command palette'><div class='cmp'><input id='ci' placeholder='Jump to a section, start the tour, switch language…' autocomplete='off'><div id='cl' role='listbox'></div></div></div>
+<div class="fx" aria-hidden="true"><div class="ly far"><svg viewBox="0 0 1200 160"><use href="#sc"/></svg><svg viewBox="0 0 1200 160"><use href="#sc"/></svg></div><div class="ly near"><svg viewBox="0 0 1200 160"><use href="#sc" transform="translate(300 0)"/></svg><svg viewBox="0 0 1200 160"><use href="#sc" transform="translate(300 0)"/></svg></div></div>
+<div class="lg" role="group" aria-label="Language"><button data-s="HG" data-l="0" aria-pressed="true">Hinglish</button><button data-s="EN" data-l="1" aria-pressed="false">English</button><button data-s="हि" data-l="2" aria-pressed="false">हिन्दी</button><button data-s="മ" data-l="3" aria-pressed="false">മലയാളം</button></div>
+<div class="hero" id="hero" data-m="o">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="pm"><path d="M0 0Q6-50 2-96" fill="none" stroke="currentColor" stroke-width="5"/><path d="M2-96Q-30-104-52-80Q-24-96 2-90ZM2-96Q34-110 58-84Q28-98 2-90ZM2-96Q-14-128-46-130Q-18-118 2-96ZM2-96Q22-128 56-126Q26-116 2-96ZM2-96Q2-120 10-136Q-4-118 2-96Z" fill="currentColor"/></g>
+<g id="sc"><path d="M0 160V122Q150 92 300 120T600 114T900 122T1200 122V160Z" fill="currentColor" opacity=".7"/><use href="#pm" transform="translate(90 160) scale(1.1)"/><use href="#pm" transform="translate(300 160) scale(.8)"/><use href="#pm" transform="translate(560 160) scale(1.3)"/><use href="#pm" transform="translate(820 160) scale(.9)"/><use href="#pm" transform="translate(1060 160) scale(1.15)"/></g></defs></svg>
+<div class="sk"><div class="sky o"></div><div class="sky e"></div><div class="stars"></div>
+<div class="hh"><p class="kk">EV2W · NIT Calicut · 201 voices</p>
+<div class="txs"><div class="tx t-o"><p class="hl">Yaad hai woh kick?<br>Woh dhuan, woh awaaz…</p><p class="sb">Sunday subah. Chai ki bhaap. Papa ka scooter. Phir ek din sab kuch shaant ho gaya.</p></div>
+<div class="tx t-e"><p class="hl">Ab bas khamoshi.<br>Sawaal ek: pehle kya theek karein?</p><p class="sb">201 aawazein, 31 baatein, ek roadmap. Electric two-wheelers ko hamari sadkon tak laane ka pehla qadam.</p></div></div>
+<div class="cta"><button class="kb" id="kick">⏻ Kick-start karo</button><button class="mb" id="mute" aria-pressed="true">Sound: on</button></div></div>
+<div class="scene"><div class="sun"></div><div class="moon"></div>
+<div class="ly far"><svg viewBox="0 0 1200 160" aria-hidden="true"><use href="#sc"/></svg><svg viewBox="0 0 1200 160" aria-hidden="true"><use href="#sc"/></svg></div>
+<div class="ly near"><svg viewBox="0 0 1200 160" aria-hidden="true"><use href="#sc" transform="translate(300 0)"/></svg><svg viewBox="0 0 1200 160" aria-hidden="true"><use href="#sc" transform="translate(300 0)"/></svg></div>
+<div class="road"></div>
+<svg class="scoot" viewBox="0 0 400 220" role="img" aria-label="A vintage scooter that turns electric"><polygon class="bm" points="332,58 560,0 560,130"/>
+<g class="sm"><circle class="sm" cx="40" cy="160" r="9"/><circle class="sm" cx="40" cy="160" r="9"/><circle class="sm" cx="40" cy="160" r="9"/></g>
+<g fill="#0b0604"><path d="M44 160C38 120 58 96 100 92L170 90C184 90 190 98 192 112L198 150L262 150L284 76L302 76L278 160L252 170L120 170L72 172Z"/><path d="M92 88C108 68 162 68 182 86L172 94L100 96Z"/><path d="M282 72L282 52L314 46L316 56L298 64L300 76Z"/><circle cx="324" cy="58" r="12"/><path d="M296 76L322 170" stroke="#0b0604" stroke-width="7" fill="none"/><path d="M300 126Q330 100 352 140L350 148Q326 120 304 140Z"/></g>
+<g stroke="#0b0604" fill="#1b110c" stroke-width="9"><g class="whl"><circle cx="82" cy="176" r="32"/><path d="M82 148V204M54 176H110M62 156L102 196M102 156L62 196" stroke="#6b5642" stroke-width="2"/></g><g class="whl"><circle cx="324" cy="176" r="30"/><path d="M324 150V202M298 176H350M306 158L342 194M342 158L306 194" stroke="#6b5642" stroke-width="2"/></g></g></svg></div></div>
+<div class="shelf"><p class="shl">Purani yaadon ka shoebox…</p><div class="arts">
+<figure class="art" style="--r:-3deg"><div class="pl3"><div class="face f1">KL-11<br>1984</div><div class="face f2">KL-11<br>EV</div></div><figcaption class="cap">Safed plate, phir hari plate (hari = electric)</figcaption></figure>
+<figure class="art" style="--r:2deg"><svg viewBox="0 0 190 124" width="190" aria-hidden="true"><rect x="2" y="2" width="186" height="120" rx="10" fill="#2a2a2e" stroke="#555"/><rect x="14" y="12" width="162" height="62" rx="5" fill="#F3E3C3"/><text x="95" y="36" text-anchor="middle" font-family="Caveat,cursive" font-size="19" fill="#7a2a14">Side A · Kick &amp; dhuan</text><text x="95" y="60" text-anchor="middle" font-family="Caveat,cursive" font-size="19" fill="#1d4f80">Side B · Khamoshi</text><rect x="48" y="82" width="94" height="28" rx="14" fill="#111"/><g class="rlr"><circle cx="70" cy="96" r="9" fill="#F3E3C3"/><path d="M70 88v16M62 96h16" stroke="#111"/></g><g class="rlr"><circle cx="120" cy="96" r="9" fill="#F3E3C3"/><path d="M120 88v16M112 96h16" stroke="#111"/></g></svg><figcaption class="cap">Woh mixtape jo scooter pe bajta tha</figcaption></figure>
+<figure class="art" style="--r:-2deg"><div class="pod"><svg viewBox="0 0 200 130" width="200" role="img" aria-label="Speedometer at 63 percent"><path d="M20 110A80 80 0 0 1 180 110" fill="none" stroke="#F3E3C3" stroke-width="3"/><path d="M148 52A80 80 0 0 1 180 110" fill="none" stroke="#C5421A" stroke-width="5"/><g id="stk" stroke="#F3E3C3" stroke-width="2"></g><g id="nd"><path d="M100 110L100 40" stroke="#FF9A3C" stroke-width="3"/></g><circle cx="100" cy="110" r="7" fill="#F3E3C3"/><text x="100" y="126" text-anchor="middle" font-family="Yatra One,serif" font-size="15" fill="#F3E3C3">63%</text></svg><small>purchase cost, sabse bada barrier</small></div></figure>
+<figure class="art" style="--r:1.5deg"><div class="pod"><div class="odo" id="odo" aria-label="201 responses"></div><small>voices logged · 31 baatein</small></div><figcaption class="cap">Odometer pe ab km nahi, awaazein</figcaption></figure>
+</div></div></div>
+<nav class="nav" aria-label="Sections"><div class="wrap"><a href="#framework">Framework</a><a href="#scales">Scales</a><a href="#priorities">Priorities</a><a href="#segments">Segments</a><a href="#math">Math lab</a><a href="#care">Limits</a><button id="theme" aria-pressed="false">Dark mode</button></div></nav>
+<main class="wrap">
+<header>
+<h1>What to fix first for electric two-wheelers</h1>
+<p class="lede">A decision framework that combines Thurstone scaling, TOPSIS and trust–risk modelling, applied to 201 online survey responses from NIT Calicut. Change the weights, switch blocks and pick a segment to test how firm each finding is.</p>
+<div class="stats">
+<div class="st"><span class="big" style="color:var(--rk)">63%</span><span>rank purchase cost first among cost barriers</span></div>
+<div class="st"><span class="big">−0.39</span><span>correlation between trust and perceived risk</span></div>
+<div class="st"><span class="big">2–3</span><span>top items per list that hold under any weights</span></div>
+<div class="st"><span class="big">201</span><span>online responses, half of the 402-person survey</span></div>
+</div>
+</header>
+
+<section id="framework"><h2>Four steps from rankings to action</h2>
+<div class="hs"><div class="hsp"><div class="steps hst">
+<a class="step" href="#scales"><span class="no">1</span><h3>Measure</h3><p>Thurstone Case V scales 31 statements in 9 forced-ranking blocks, with bootstrap intervals.</p></a>
+<a class="step" href="#priorities"><span class="no">2</span><h3>Prioritise</h3><p>TOPSIS ranks 12 trust levers and 19 risk barriers on four criteria.</p></a>
+<a class="step" href="#segments"><span class="no">3</span><h3>Understand</h3><p>Trust and risk ratings define four segments of respondents.</p></a>
+<a class="step" href="#segments"><span class="no">4</span><h3>Explain and act</h3><p>Weight tests, resampling and a segment action matrix show what is firm.</p></a>
+</div><div class="hsb"><i></i></div></div></div></section>
+
+<section id="scales"><h2>How strongly each statement was preferred</h2>
+<p class="lede">Within each block, respondents ranked statements against each other. Dots show the scaled preference (0 is the block average); the bar is the 95% bootstrap interval.</p>
+<div class="tabs" id="btabs" role="tablist" aria-label="Blocks"></div>
+<div class="card"><ul class="sl" id="sl"></ul><p class="note" id="snote"></p><p class="note">Live: every dot keeps re-drawing itself inside its 95% interval (normal approximation), so overlapping statements visibly swap places.</p></div></section>
+
+<section id="priorities"><h2>Rank the levers and barriers, then stress-test the ranking</h2>
+<div class="pri TT" id="pri">
+<div class="card ctl">
+<div class="seg" id="kseg"><button data-k="TT" aria-pressed="true">Trust levers</button><button data-k="TR" aria-pressed="false">Risk barriers</button></div>
+<div id="sliders"></div>
+<div class="pre"><button id="peq">Equal weights</button><button id="pen">Entropy weights</button><button id="psw">▶ Sweep</button></div>
+</div>
+<div><p id="lead" aria-live="polite"></p><ol class="rl" id="rl"></ol>
+<p class="note">Bars are relative to the top item (1.00), so compare ranks, not raw scores. “Usual rank” is the 95% range when respondents are resampled with equal weights.</p></div>
+</div></section>
+
+<section id="segments"><h2>Who is hesitant, and what moves them</h2>
+<div class="seg2">
+<div><div class="hm" id="hm" role="group" aria-label="Respondents by trust and risk rating"></div>
+<p class="note">Rows are initial trust (5 is highest), columns are perceived risk (5 is highest). Select a cell to open its segment.</p></div>
+<div><div class="chips" id="chips"></div><div class="card" id="sp" aria-live="polite"></div>
+<ol class="rule"><li>Lower the upfront cost with subsidy, financing or battery-as-a-service.</li><li>Expand and publicise charger availability.</li><li>Build trust through verified reviews and clear policy communication.</li><li>For sceptics, add brand-backed warranties and visible peer adoption.</li></ol></div>
+</div></section>
+
+<section id="math"><h2>The math, live</h2>
+<p class="lede">Every number above is recomputed here from the survey’s pairwise counts and TOPSIS criteria, so you can see exactly where it comes from.</p>
+<div class="lab">
+<div class="card"><h3>Thurstone Case V: from pairwise wins to a scale</h3>
+<div class="eq"><math><msub><mover><mi>z</mi><mo>¯</mo></mover><mi>i</mi></msub><mo>=</mo><mfrac><mn>1</mn><mi>k</mi></mfrac><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><msup><mi>Φ</mi><mn>−1</mn></msup><mo>(</mo><msub><mi>p</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>)</mo></math>
+<math><msub><mi>s</mi><mi>i</mi></msub><mo>=</mo><msub><mover><mi>z</mi><mo>¯</mo></mover><mi>i</mi></msub><mo>−</mo><mover><mi>z</mi><mo>¯</mo></mover></math>
+<math><msub><mover><mi>p</mi><mo>^</mo></mover><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mi>Φ</mi><mo>(</mo><msub><mi>s</mi><mi>i</mi></msub><mo>−</mo><msub><mi>s</mi><mi>j</mi></msub><mo>)</mo></math></div>
+<p class="mu" style="margin:0">p<sub>ij</sub> is the share of respondents who ranked statement i above j. Pick two statements to see their latent preference curves and how well the model predicts the observed share.</p>
+<div class="row"><select id="mbk" aria-label="Block"></select><select id="ma" aria-label="Statement A"></select><select id="mb2" aria-label="Statement B"></select></div>
+<svg id="bell" class="bell" viewBox="0 0 640 172" role="img" aria-label="Two normal curves for the chosen statements"></svg>
+<p id="rd" style="margin:8px 0 6px"></p><p id="simr" class="note" style="margin:0 0 10px"></p><div class="row"><button class="go" id="simb">Pause</button><button class="go" id="simx">Reset</button></div><div class="scr" id="zt"></div></div>
+<div class="card"><h3>TOPSIS, one statement at a time</h3>
+<div class="eq"><math><msub><mi>r</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msqrt><munder><mo>∑</mo><mi>i</mi></munder><msubsup><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow><mn>2</mn></msubsup></msqrt></mfrac></math>
+<math><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><mfrac><msubsup><mi>D</mi><mi>i</mi><mo>−</mo></msubsup><mrow><msubsup><mi>D</mi><mi>i</mi><mo>+</mo></msubsup><mo>+</mo><msubsup><mi>D</mi><mi>i</mi><mo>−</mo></msubsup></mrow></mfrac></math>
+<math><msub><mi>w</mi><mi>j</mi></msub><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><msub><mi>e</mi><mi>j</mi></msub></mrow><mrow><munder><mo>∑</mo><mi>j</mi></munder><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi>e</mi><mi>j</mi></msub><mo>)</mo></mrow></mfrac></math></div>
+<p class="mu" style="margin:0">Uses the weights set in the Priorities section (v<sub>ij</sub> = w<sub>j</sub> r<sub>ij</sub>). The last row shows entropy weights computed from the same criteria.</p>
+<div class="row"><select id="msel" aria-label="Statement"></select></div>
+<div class="scr" id="stp"></div></div>
+<div class="card"><h3>Does the ranking survive random weights?</h3>
+<p class="mu" style="margin:0 0 12px">Draws 2,000 weight vectors uniformly from the simplex (Dirichlet with all parameters 1) and re-ranks each time. Darker cells mean that rank was reached more often. The last column is the chance of finishing in the top three.</p>
+<button class="go" id="mcb">Run 2,000 draws</button> <span id="mcp" class="mu"></span><div class="mcg" id="mcg"></div></div>
+</div></section>
+
+<section id="care"><div class="card care"><h3>Read with care</h3><ul>
+<li>The survey has no adoption-intention question, so adoption is proxied by trust, risk and the choice among three scooters.</li>
+<li>The analysis uses 201 online responses; the offline half is not included yet.</li>
+<li>The Conflicted segment has 8 people and is indicative only.</li>
+<li>TOPSIS closeness is relative to the best item. Only the top two or three ranks are firm.</li>
+<li>Scale values come from Thurstone Case V, not a full Thurstonian IRT model. Criteria and cut-offs are analyst choices.</li></ul></div></section>
+</main>
+<footer class="ft"><div class="ftp" aria-hidden="true"><svg viewBox="0 0 1200 160" preserveAspectRatio="xMidYMax slice"><use href="#sc"/></svg></div>
+<div class="wrap ftg"><div><p class="ftk">Project by</p><p class="ftn">Md Shafaque</p><p class="ftr">Department of Civil Engineering · NIT Calicut</p><p class="ftd">EV2W: a decision dashboard for what to fix first in electric two-wheeler adoption, built on 201 online survey responses.</p></div>
+<div class="ftc" role="navigation" aria-label="Footer"><p class="ftk">Explore</p><a href="#framework">Framework</a><a href="#scales">Scales</a><a href="#priorities">Priorities</a><a href="#segments">Segments</a><a href="#math">Math lab</a><a href="#care">Limits</a></div>
+<div class="ftc"><p class="ftk">Methods</p><span>Thurstone Case V scaling</span><span>TOPSIS ranking</span><span>Entropy weights</span><span>Monte Carlo weight stress test</span></div></div>
+<div class="wrap ftl"><span>© 2026 Md Shafaque · NIT Calicut</span><a href="#hero">Back to top ↑</a></div></footer>
+
+<script>
+(()=>{let S={n:0},raf=0,pause=false;const sd=Math.SQRT1_2,gz=()=>Math.sqrt(-2*Math.log(1-Math.random()))*Math.cos(6.283185307*Math.random()),X=x=>(x+2.5)/5*640,Y=y=>150-Math.min(y,.62)/.62*120;
+function draw(){const s=S,g=document.querySelector('#hist');if(!g||!s.n)return;let h='';for(let i=0;i<50;i++){const x=X(-2.5+i*.1);[[s.ca,s.col,.5],[s.cb,'var(--ink)',.22]].forEach(([c,f,o])=>{const y=Y(c[i]/(s.n*.1));h+=`<rect x="${x}" y="${y}" width="12.3" height="${150-y}" fill="${f}" opacity="${o}"/>`})}g.innerHTML=h;
+const q=s.w/s.n;document.querySelector('#simr').textContent=`Simulated respondents: ${s.n.toLocaleString()} · A above B in ${(q*100).toFixed(1)}% · model Φ gives ${(s.p*100).toFixed(1)}% · gap ${Math.abs(q-s.p).toFixed(3)}`}
+function frame(){const s=S;if(!pause&&s.n<s.max){for(let i=0;i<s.rate;i++){const a=s.sa+sd*gz(),b=s.sb+sd*gz();s.n++;if(a>b)s.w++;let k=Math.floor((a+2.5)*10);if(k>=0&&k<50)s.ca[k]++;k=Math.floor((b+2.5)*10);if(k>=0&&k<50)s.cb[k]++}draw()}raf=requestAnimationFrame(frame)}
+window.simStart=(sa,sb,p,col)=>{S={sa,sb,p,col,n:0,w:0,max:20000,rate:matchMedia('(prefers-reduced-motion:reduce)').matches?3000:14,ca:Array(50).fill(0),cb:Array(50).fill(0)};document.querySelector('#bell').insertAdjacentHTML('beforeend','<g id="hist"></g>');cancelAnimationFrame(raf);frame()};
+const b=document.querySelector('#simb');b.onclick=()=>{pause=!pause;b.textContent=pause?'Resume':'Pause'};document.querySelector('#simx').onclick=()=>simStart(S.sa,S.sb,S.p,S.col)})();
+</script>
+<script>
+const D={"T":[{"b":"M","d":"Technology & brand","t":"T","c":"M1","s":"Confidence in EV technology","sc":0.174,"lo":0.083,"hi":0.275,"t1":0.448},{"b":"M","d":"Technology & brand","t":"T","c":"M2","s":"Number of EV models","sc":-0.186,"lo":-0.27,"hi":-0.101,"t1":0.149},{"b":"M","d":"Technology & brand","t":"T","c":"M3","s":"Manufacturer reputation","sc":0.012,"lo":-0.096,"hi":0.117,"t1":0.403},{"b":"E","d":"Environment","t":"T","c":"E1","s":"Knowledge of environmental impact","sc":0.079,"lo":-0.013,"hi":0.186,"t1":0.418},{"b":"E","d":"Environment","t":"T","c":"E2","s":"Long-term sustainability commitment","sc":0.145,"lo":0.055,"hi":0.221,"t1":0.333},{"b":"E","d":"Environment","t":"T","c":"E3","s":"Efficient/sustainable energy grid","sc":-0.224,"lo":-0.318,"hi":-0.126,"t1":0.249},{"b":"PS","d":"Policy & subsidy","t":"T","c":"PS1","s":"Awareness of govt policies","sc":0.202,"lo":0.108,"hi":0.306,"t1":0.483},{"b":"PS","d":"Policy & subsidy","t":"T","c":"PS2","s":"Sufficiency of policy & subsidy","sc":-0.038,"lo":-0.124,"hi":0.042,"t1":0.209},{"b":"PS","d":"Policy & subsidy","t":"T","c":"PS3","s":"Potential future policy changes","sc":-0.164,"lo":-0.275,"hi":-0.054,"t1":0.308},{"b":"P","d":"Peer & public influence","t":"T","c":"P1","s":"Consumer reviews & feedback","sc":0.269,"lo":0.175,"hi":0.371,"t1":0.502},{"b":"P","d":"Peer & public influence","t":"T","c":"P2","s":"EV adoption in social circle","sc":0.069,"lo":-0.026,"hi":0.162,"t1":0.338},{"b":"P","d":"Peer & public influence","t":"T","c":"P3","s":"Public opinion on charging infra","sc":-0.338,"lo":-0.44,"hi":-0.241,"t1":0.159},{"b":"V","d":"Vehicle performance","t":"R","c":"V1","s":"Design & technical specs","sc":0.138,"lo":0.035,"hi":0.261,"t1":0.338},{"b":"V","d":"Vehicle performance","t":"R","c":"V2","s":"Driving range per charge","sc":0.299,"lo":0.207,"hi":0.401,"t1":0.234},{"b":"V","d":"Vehicle performance","t":"R","c":"V3","s":"Battery lifespan","sc":0.255,"lo":0.165,"hi":0.338,"t1":0.204},{"b":"V","d":"Vehicle performance","t":"R","c":"V4","s":"Braking & handling","sc":-0.402,"lo":-0.504,"hi":-0.309,"t1":0.08},{"b":"V","d":"Vehicle performance","t":"R","c":"V5","s":"Battery replacement cost","sc":-0.288,"lo":-0.412,"hi":-0.172,"t1":0.144},{"b":"H","d":"Home/fast charging","t":"R","c":"H1","s":"Fast-charger installation cost","sc":0.259,"lo":0.167,"hi":0.362,"t1":0.527},{"b":"H","d":"Home/fast charging","t":"R","c":"H2","s":"Slow charging speed","sc":-0.022,"lo":-0.1,"hi":0.063,"t1":0.224},{"b":"H","d":"Home/fast charging","t":"R","c":"H3","s":"Home-charging inconvenience","sc":-0.237,"lo":-0.341,"hi":-0.142,"t1":0.249},{"b":"PC","d":"Public charging","t":"R","c":"PC1","s":"Charging-station availability","sc":0.383,"lo":0.278,"hi":0.496,"t1":0.507},{"b":"PC","d":"Public charging","t":"R","c":"PC2","s":"Long public-charging waits","sc":0.028,"lo":-0.063,"hi":0.118,"t1":0.149},{"b":"PC","d":"Public charging","t":"R","c":"PC3","s":"Unsure of charging cost","sc":-0.302,"lo":-0.399,"hi":-0.21,"t1":0.109},{"b":"PC","d":"Public charging","t":"R","c":"PC4","s":"Unreliable chargers on long trips","sc":-0.109,"lo":-0.218,"hi":-0.001,"t1":0.234},{"b":"C","d":"Cost & value","t":"R","c":"C1","s":"High purchase cost","sc":0.55,"lo":0.438,"hi":0.676,"t1":0.627},{"b":"C","d":"Cost & value","t":"R","c":"C2","s":"Maintenance cost","sc":0.073,"lo":-0.013,"hi":0.165,"t1":0.139},{"b":"C","d":"Cost & value","t":"R","c":"C3","s":"Unknown long-term savings","sc":-0.115,"lo":-0.203,"hi":-0.029,"t1":0.109},{"b":"C","d":"Cost & value","t":"R","c":"C4","s":"Unknown resale value","sc":-0.508,"lo":-0.633,"hi":-0.398,"t1":0.124},{"b":"S","d":"Safety","t":"R","c":"S1","s":"Accident risk of EVs","sc":0.155,"lo":0.054,"hi":0.261,"t1":0.463},{"b":"S","d":"Safety","t":"R","c":"S2","s":"Unsafe vs conventional","sc":-0.092,"lo":-0.164,"hi":-0.013,"t1":0.174},{"b":"S","d":"Safety","t":"R","c":"S3","s":"Charging-infra safety/reliability","sc":-0.062,"lo":-0.168,"hi":0.046,"t1":0.363}],"TT":[{"c":"P1","s":"Consumer reviews & feedback","x":[0.6542,1.5075,0.5875,0.6117],"rl":1,"rh":3},{"c":"PS1","s":"Awareness of govt policies","x":[0.6194,1.4478,0.5702,0.568],"rl":1,"rh":4},{"c":"M1","s":"Confidence in EV technology","x":[0.602,1.3433,0.5234,0.4757],"rl":2,"rh":7},{"c":"E1","s":"Knowledge of environmental impact","x":[0.5473,1.2537,0.4691,0.5534],"rl":2,"rh":7},{"c":"M3","s":"Manufacturer reputation","x":[0.5075,1.209,0.4545,0.5874],"rl":2,"rh":7},{"c":"E2","s":"Long-term sustainability commitment","x":[0.5846,1.0,0.5312,0.5291],"rl":3,"rh":7},{"c":"P2","s":"EV adoption in social circle","x":[0.5398,1.0149,0.4211,0.6068],"rl":3,"rh":7},{"c":"PS2","s":"Sufficiency of policy & subsidy","x":[0.4776,0.6269,0.3929,0.4903],"rl":8,"rh":10},{"c":"PS3","s":"Potential future policy changes","x":[0.403,0.9254,0.2976,0.4417],"rl":8,"rh":11},{"c":"E3","s":"Efficient/sustainable energy grid","x":[0.3682,0.7463,0.3026,0.4175],"rl":8,"rh":11},{"c":"M2","s":"Number of EV models","x":[0.3905,0.4478,0.3452,0.4369],"rl":9,"rh":11},{"c":"P3","s":"Public opinion on charging infra","x":[0.306,0.4776,0.2024,0.2816],"rl":12,"rh":12}],"TR":[{"c":"C1","s":"High purchase cost","x":[0.7695,2.5075,0.7344,0.7282],"rl":1,"rh":1},{"c":"PC1","s":"Charging-station availability","x":[0.6949,2.0299,0.5877,0.6893],"rl":2,"rh":2},{"c":"H1","s":"Fast-charger installation cost","x":[0.6517,1.5821,0.4605,0.6311],"rl":3,"rh":6},{"c":"V2","s":"Driving range per charge","x":[0.6418,1.1692,0.5906,0.6044],"rl":3,"rh":7},{"c":"S1","s":"Accident risk of EVs","x":[0.592,1.3881,0.4474,0.5874],"rl":3,"rh":8},{"c":"V3","s":"Battery lifespan","x":[0.6157,1.0199,0.5868,0.6481],"rl":3,"rh":7},{"c":"V1","s":"Design & technical specs","x":[0.5659,1.6915,0.2763,0.5558],"rl":3,"rh":8},{"c":"S3","s":"Charging-infra safety/reliability","x":[0.4627,1.0896,0.3719,0.4466],"rl":7,"rh":13},{"c":"PC2","s":"Long public-charging waits","x":[0.5158,0.597,0.4474,0.5146],"rl":8,"rh":14},{"c":"C2","s":"Maintenance cost","x":[0.539,0.5572,0.4211,0.5405],"rl":8,"rh":13},{"c":"H2","s":"Slow charging speed","x":[0.4876,0.6716,0.4643,0.4563],"rl":8,"rh":14},{"c":"PC4","s":"Unreliable chargers on long trips","x":[0.4428,0.9353,0.3614,0.4401],"rl":8,"rh":15},{"c":"C3","s":"Unknown long-term savings","x":[0.4428,0.4378,0.4175,0.4628],"rl":10,"rh":15},{"c":"S2","s":"Unsafe vs conventional","x":[0.4453,0.5224,0.3684,0.466],"rl":9,"rh":16},{"c":"H3","s":"Home-charging inconvenience","x":[0.3607,0.7463,0.2893,0.4126],"rl":11,"rh":17},{"c":"V5","s":"Battery replacement cost","x":[0.3619,0.7214,0.2708,0.3835],"rl":12,"rh":18},{"c":"PC3","s":"Unsure of charging cost","x":[0.3466,0.4378,0.2063,0.356],"rl":16,"rh":19},{"c":"V4","s":"Braking & handling","x":[0.3147,0.398,0.244,0.3083],"rl":16,"rh":19},{"c":"C4","s":"Unknown resale value","x":[0.2488,0.4975,0.1905,0.2686],"rl":17,"rh":19}],"QP":{"Confident adopters":{"n":68,"R":["High purchase cost","Charging-station availability"],"T":["Confidence in EV technology","Consumer reviews & feedback"]},"Conflicted":{"n":8,"R":["High purchase cost","Design & technical specs"],"T":["Consumer reviews & feedback","Awareness of govt policies"]},"Passive/Neutral":{"n":86,"R":["High purchase cost","Charging-station availability"],"T":["Awareness of govt policies","Consumer reviews & feedback"]},"Sceptics":{"n":39,"R":["High purchase cost","Charging-station availability"],"T":["Manufacturer reputation","EV adoption in social circle"]}},"H":[[4,1,2,3,2],[0,1,11,21,0],[2,14,51,12,1],[2,24,26,4,1],[5,8,3,0,3]]};
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const f2=v=>(v<0?'−':'')+Math.abs(v).toFixed(2);
+const root=document.documentElement,dark=()=>root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+const tb=$('#theme');tb.textContent=dark()?'Light mode':'Dark mode';
+tb.onclick=()=>{root.dataset.theme=dark()?'light':'dark';tb.textContent=dark()?'Light mode':'Dark mode';tb.setAttribute('aria-pressed',dark())};
+
+/* Scales */
+const BL=[...new Set(D.T.map(r=>r.b))];let cur=BL[0];
+BL.forEach(b=>{const r=D.T.find(x=>x.b===b),t=el('button','tab',`<i class="dt ${r.t}"></i>${esc(r.d)}`);t.setAttribute('role','tab');t.dataset.b=b;t.onclick=()=>{cur=b;drawScale()};$('#btabs').append(t)});
+function drawScale(){
+$$('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.b===cur));
+const rows=D.T.filter(r=>r.b===cur).sort((a,b)=>b.sc-a.sc),best=rows[0],P=v=>Math.max(0,Math.min(100,(v+.75)/1.5*100)),ul=$('#sl');
+ul.className='sl '+best.t;ul.innerHTML='';
+rows.forEach((r,i)=>ul.append(el('li','sr'+(i>0&&r.hi<best.lo?' lo':''),`<span class="lb">${esc(r.s)}</span><span class="tk" aria-hidden="true"><i class="ci" style="left:${P(r.lo)}%;width:${P(r.hi)-P(r.lo)}%"></i><b class="dot" data-s="${r.sc}" data-sd="${(r.hi-r.lo)/3.92}" style="left:${P(r.sc)}%"></b></span><span class="nm"><b>${f2(r.sc)}</b> (${f2(r.lo)} to ${f2(r.hi)})<br>${Math.round(r.t1*100)}% ranked it first</span>`)));
+const tied=rows.filter((r,i)=>i>0&&!(r.hi<best.lo)).length;
+$('#snote').textContent=`${best.s} leads. `+(tied?`${tied} other statement${tied>1?'s':''} overlap its interval, so their order is not firm.`:'Every other statement is clearly lower.');
+}
+drawScale();
+
+/* TOPSIS */
+const RH=46,EQ=[.25,.25,.25,.25];let kind='TT',W=EQ;
+const CR=[['Overall rank','Average rank position'],['First-choice share','How often it is ranked first, versus chance'],['Worst segment','Its weakest score across gender, age, income and student groups'],['Hesitant group','Score among respondents with low trust or high risk']];
+function cc(L,w){const nr=[0,1,2,3].map(j=>Math.sqrt(L.reduce((a,r)=>a+r.x[j]**2,0))),V=L.map(r=>r.x.map((v,j)=>v/nr[j]*w[j])),
+bs=[0,1,2,3].map(j=>Math.max(...V.map(v=>v[j]))),wo=[0,1,2,3].map(j=>Math.min(...V.map(v=>v[j])));
+return V.map(v=>{const p=Math.hypot(...v.map((a,j)=>a-bs[j])),m=Math.hypot(...v.map((a,j)=>a-wo[j]));return m/(p+m)})}
+function ent(L){const n=L.length,d=[0,1,2,3].map(j=>{const s=L.reduce((a,r)=>a+r.x[j],0);return 1+L.reduce((a,r)=>{const p=Math.max(r.x[j]/s,1e-12);return a+p*Math.log(p)},0)/Math.log(n)}),t=d.reduce((a,b)=>a+b,0);return d.map(v=>v/t)}
+const ranks=c=>{const o=c.map((v,i)=>i).sort((a,b)=>c[b]-c[a]),r=[];o.forEach((i,p)=>r[i]=p);return r};
+CR.forEach((c,j)=>$('#sliders').append(el('div','',`<label class="wl" for="w${j}">${c[0]} <output id="o${j}"></output></label><p class="wh">${c[1]}</p><input type="range" class="wi" id="w${j}" min="0" max="100" value="25">`)));
+const sync=()=>{const raw=$$('.wi').map(i=>+i.value),s=raw.reduce((a,b)=>a+b,0);W=s?raw.map(v=>v/s):EQ;W.forEach((w,j)=>$('#o'+j).textContent=Math.round(w*100)+'%');upd()};
+$$('.wi').forEach(i=>i.oninput=sync);
+const setW=w=>{w.forEach((v,j)=>$('#w'+j).value=Math.round(v*100));sync()};
+$('#peq').onclick=()=>setW(EQ);$('#pen').onclick=()=>setW(ent(D[kind]));
+function build(){const L=D[kind],rl=$('#rl');$('#pri').className='pri '+kind;rl.innerHTML='';rl.style.height=L.length*RH+'px';
+L.forEach(r=>rl.append(el('li','',`<span class="n"></span><span class="lb">${esc(r.s)}<small>usual rank ${r.rl===r.rh?r.rl:r.rl+'–'+r.rh}</small></span><span class="bar"><i></i></span><span class="v"></span><span class="mv"></span>`)));
+$$('#kseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===kind));sync()}
+function upd(){const L=D[kind],c=cc(L,W),r=ranks(c),r0=ranks(cc(L,EQ)),mx=Math.max(...c);
+$$('#rl li').forEach((li,i)=>{li.style.transform=`translateY(${r[i]*RH}px)`;$('.n',li).textContent=r[i]+1;$('.bar i',li).style.width=(c[i]/mx*100)+'%';$('.v',li).textContent=(c[i]/mx).toFixed(2);
+const d=r0[i]-r[i];$('.mv',li).innerHTML=d?`<span aria-label="${d>0?'up':'down'} ${Math.abs(d)} from equal weights">${d>0?'▲':'▼'}${Math.abs(d)}</span>`:''});
+const t=r.indexOf(0);$('#lead').textContent=`Top ${kind==='TT'?'trust lever':'risk barrier'}: ${L[t].s}.`}
+$$('#kseg button').forEach(b=>b.onclick=()=>{kind=b.dataset.k;build()});build();
+
+/* Heatmap + segments */
+const SEG={'Confident adopters':['Trust 4–5, risk 1–3','Keep them confident: show verified reviews and technology performance, and make cost and charging concrete with financing options and charger maps.'],
+'Passive/Neutral':['Trust 1–3, risk 1–3','Win them with clarity: explain subsidies and policy plainly, back it with verified reviews, and cut upfront cost.'],
+'Sceptics':['Trust 1–3, risk 4–5','Reduce doubt: brand-backed warranties and visible peer adoption, alongside upfront cost relief and charger availability.'],
+'Conflicted':['Trust 4–5, risk 4–5','Collect more data before acting: only 8 respondents, with cost and design concerns showing up.']};
+const quad=(t,p)=>t>=4?(p>=4?'Conflicted':'Confident adopters'):(p>=4?'Sceptics':'Passive/Neutral');
+const hm=$('#hm'),mxv=Math.max(...D.H.flat());let seg=null;
+[5,4,0,3,2,1].forEach(t=>{if(!t){for(let i=0;i<7;i++)hm.append(el('div'));return}
+hm.append(el('div','',t));
+[1,2,3,0,4,5].forEach(p=>{if(!p){hm.append(el('div'));return}
+const n=D.H[t-1][p-1],q=quad(t,p),b=el('button','cell'+(n/mxv>.45?' hi':''),n);b.style.setProperty('--v',n/mxv);b.dataset.q=q;b.setAttribute('aria-label',`Trust ${t}, risk ${p}: ${n} respondents, ${q}`);b.onclick=()=>pick(q);hm.append(b)})});
+hm.append(el('div'));[1,2,3,0,4,5].forEach(p=>hm.append(el('div','',p||'')));
+const N={};Object.keys(SEG).forEach(k=>N[k]=D.QP[k].n);
+Object.keys(SEG).forEach(k=>{const b=el('button','',`${k} (${N[k]})`);b.dataset.q=k;b.onclick=()=>pick(k);$('#chips').append(b)});
+function pick(q){seg=q;hm.classList.add('has');$$('.cell').forEach(c=>c.classList.toggle('sel',c.dataset.q===q));$$('#chips button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.q===q));
+const d=D.QP[q],li=a=>a.map(s=>`<li>${esc(s)}</li>`).join('');
+$('#sp').innerHTML=`<h3>${q}</h3><p class="mu" style="margin:4px 0 0">${SEG[q][0]} · ${d.n} people, ${Math.round(d.n/201*100)}% of 201</p><div class="two"><div><h4>Biggest risk barriers</h4><ul class="cp R">${li(d.R)}</ul></div><div><h4>Strongest trust levers</h4><ul class="cp T">${li(d.T)}</ul></div></div><p style="margin:0 0 ${q==='Conflicted'?10:0}px"><b>What to do.</b> ${SEG[q][1]}</p>${q==='Conflicted'?'<p class="warn">Indicative only: this segment has 8 people.</p>':''}`}
+
+/* Math lab */
+const PM={"M":{"p":[[0.5,0.6658,0.5371],[0.3342,0.5,0.448],[0.4629,0.552,0.5]],"z":[[0.0,0.428,0.093],[-0.428,0.0,-0.131],[-0.093,0.131,0.0]]},"E":{"p":[[0.5,0.4975,0.5965],[0.5025,0.5,0.6658],[0.4035,0.3342,0.5]],"z":[[0.0,-0.006,0.244],[0.006,0.0,0.428],[-0.244,-0.428,0.0]]},"PS":{"p":[[0.5,0.6015,0.6361],[0.3985,0.5,0.5569],[0.3639,0.4431,0.5]],"z":[[0.0,0.257,0.348],[-0.257,0.0,0.143],[-0.348,-0.143,0.0]]},"P":{"p":[[0.5,0.5767,0.7302],[0.4233,0.5,0.6559],[0.2698,0.3441,0.5]],"z":[[0.0,0.194,0.613],[-0.194,0.0,0.401],[-0.613,-0.401,0.0]]},"V":{"p":[[0.5,0.4876,0.4728,0.7153,0.5866],[0.5124,0.5,0.5965,0.7599,0.6955],[0.5272,0.4035,0.5,0.7896,0.7401],[0.2847,0.2401,0.2104,0.5,0.5272],[0.4134,0.3045,0.2599,0.4728,0.5]],"z":[[0.0,-0.031,-0.068,0.569,0.219],[0.031,0.0,0.244,0.706,0.512],[0.068,-0.244,0.0,0.805,0.644],[-0.569,-0.706,-0.805,0.0,0.068],[-0.219,-0.512,-0.644,-0.068,0.0]]},"H":{"p":[[0.5,0.6609,0.6411],[0.3391,0.5,0.6361],[0.3589,0.3639,0.5]],"z":[[0.0,0.415,0.361],[-0.415,0.0,0.348],[-0.361,-0.348,0.0]]},"PC":{"p":[[0.5,0.6955,0.745,0.6411],[0.3045,0.5,0.6807,0.5619],[0.255,0.3193,0.5,0.4678],[0.3589,0.4381,0.5322,0.5]],"z":[[0.0,0.512,0.659,0.361],[-0.512,0.0,0.47,0.156],[-0.659,-0.47,0.0,-0.081],[-0.361,-0.156,0.081,0.0]]},"C":{"p":[[0.5,0.75,0.7649,0.7896],[0.25,0.5,0.6262,0.7401],[0.2351,0.3738,0.5,0.7203],[0.2104,0.2599,0.2797,0.5]],"z":[[0.0,0.674,0.722,0.805],[-0.674,0.0,0.322,0.644],[-0.722,-0.322,0.0,0.584],[-0.805,-0.644,-0.584,0.0]]},"S":{"p":[[0.5,0.6114,0.5718],[0.3886,0.5,0.5025],[0.4282,0.4975,0.5]],"z":[[0.0,0.283,0.181],[-0.283,0.0,0.006],[-0.181,-0.006,0.0]]}};
+const Phi=x=>{const t=1/(1+.3275911*Math.abs(x)/Math.SQRT2),y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-.284496736)*t+.254829592)*t*Math.exp(-x*x/2);return .5*(1+(x<0?-y:y))};
+const SB=$('#mbk'),SA=$('#ma'),SC=$('#mb2');
+BL.forEach(b=>SB.append(new Option(D.T.find(x=>x.b===b).d,b)));SB.value='C';
+function fillAB(){const rows=D.T.filter(r=>r.b===SB.value);SA.innerHTML='';SC.innerHTML='';rows.forEach((r,i)=>{SA.append(new Option(r.s,i));SC.append(new Option(r.s,i))});SA.value=0;SC.value=1;bell()}
+function bell(){const rows=D.T.filter(r=>r.b===SB.value),ia=+SA.value,ib=+SC.value,a=rows[ia],b=rows[ib],sg=Math.SQRT1_2,X=x=>(x+2.5)/5*640,Y=y=>150-y/.62*120,c=a.t==='T'?'var(--tr)':'var(--rk)';
+const path=m=>{let d='';for(let i=0;i<=120;i++){const x=-2.5+5*i/120,y=Math.exp(-((x-m)**2)/(2*sg*sg))/(sg*Math.sqrt(2*Math.PI));d+=(i?'L':'M')+X(x).toFixed(1)+' '+Y(y).toFixed(1)}return d};
+$('#bell').innerHTML=`<line x1="0" y1="150" x2="640" y2="150" stroke="var(--ln)"/><path d="${path(a.sc)}L${X(2.5)} 150L${X(-2.5)} 150Z" fill="${c}" fill-opacity=".3" stroke="${c}" stroke-width="2"/><path d="${path(b.sc)}" fill="none" stroke="var(--ink)" stroke-width="2" stroke-dasharray="5 4"/><line x1="${X(a.sc)}" x2="${X(a.sc)}" y1="20" y2="150" stroke="${c}"/><line x1="${X(b.sc)}" x2="${X(b.sc)}" y1="20" y2="150" stroke="var(--ink)" stroke-dasharray="3 3"/><text x="${X(a.sc)+5}" y="16">A: ${esc(a.s)}</text><text x="${X(b.sc)+5}" y="32">B: ${esc(b.s)}</text>`+[-2,-1,0,1,2].map(v=>`<text x="${X(v)-5}" y="166">${v}</text>`).join('');
+const P=PM[SB.value],pr=Phi(a.sc-b.sc),ob=P.p[ia][ib];
+$('#rd').innerHTML=`Model: P(A above B) = Φ(${f2(a.sc)} − ${f2(b.sc)}) = <b>${pr.toFixed(3)}</b>. Observed share: <b>${ob.toFixed(3)}</b> (z = ${f2(P.z[ia][ib])}). Gap ${Math.abs(pr-ob).toFixed(3)}.`;simStart(a.sc,b.sc,pr,c)}
+function ztab(){const rows=D.T.filter(r=>r.b===SB.value),Z=PM[SB.value].z,k=rows.length,zb=Z.map(r=>r.reduce((x,y)=>x+y,0)/k),g=zb.reduce((x,y)=>x+y,0)/k;
+$('#zt').innerHTML=`<table class="mt"><tr><th>z<sub>ij</sub></th>${rows.map((r,i)=>`<th>${i+1}</th>`).join('')}<th>z̄<sub>i</sub></th><th>s<sub>i</sub></th><th>Scale table</th></tr>`+rows.map((r,i)=>`<tr><td>${i+1}. ${esc(r.s)}</td>${Z[i].map(v=>`<td style="background:color-mix(in srgb,var(--ink) ${Math.min(Math.abs(v)*18,28)}%,transparent)">${f2(v)}</td>`).join('')}<td>${f2(zb[i])}</td><td><b>${f2(zb[i]-g)}</b></td><td>${f2(r.sc)}${Math.abs(zb[i]-g-r.sc)<.006?' ✓':''}</td></tr>`).join('')+'</table>'}
+SB.onchange=()=>{fillAB();ztab()};SA.onchange=SC.onchange=bell;fillAB();ztab();
+function stepRender(){const L=D[kind],sel=$('#msel');
+if(sel.dataset.k!==kind){sel.innerHTML='';L.forEach((r,i)=>sel.append(new Option(r.s,i)));sel.dataset.k=kind;sel.value=ranks(cc(L,W)).indexOf(0)}
+const i=+sel.value,J=[0,1,2,3],nr=J.map(j=>Math.sqrt(L.reduce((a,r)=>a+r.x[j]**2,0))),V=L.map(r=>r.x.map((v,j)=>v/nr[j]*W[j])),bs=J.map(j=>Math.max(...V.map(v=>v[j]))),wo=J.map(j=>Math.min(...V.map(v=>v[j]))),
+dp=Math.hypot(...V[i].map((a,j)=>a-bs[j])),dm=Math.hypot(...V[i].map((a,j)=>a-wo[j])),we=ent(L),n=L.length,re=ranks(cc(L,EQ)),rn=ranks(cc(L,we)),sp=1-6*re.reduce((a,r,q)=>a+(r-rn[q])**2,0)/(n*(n*n-1)),f=v=>v.toFixed(3),
+row=(t,a)=>`<tr><td>${t}</td>${a.map(v=>`<td>${f(v)}</td>`).join('')}</tr>`;
+$('#stp').innerHTML=`<table class="mt"><tr><th></th>${CR.map(c=>`<th>${c[0]}</th>`).join('')}</tr>${row('x<sub>ij</sub> (raw)',L[i].x)}${row('√Σx²',nr)}${row('r<sub>ij</sub>',J.map(j=>L[i].x[j]/nr[j]))}${row('w<sub>j</sub>',W)}${row('v<sub>ij</sub>',V[i])}${row('A⁺ (best)',bs)}${row('A⁻ (worst)',wo)}${row('entropy w<sub>j</sub>',we)}</table><p style="margin:10px 0 0">D⁺ = ${f(dp)} · D⁻ = ${f(dm)} · C = D⁻/(D⁺ + D⁻) = <b>${f(dm/(dp+dm))}</b><br><span class="mu">Equal vs entropy weights, rank agreement: Spearman ρ = ${sp.toFixed(2)}</span></p>`}
+$('#msel').onchange=stepRender;
+const _u=upd;upd=function(){_u();stepRender()};sync();
+let mcRun=0;
+$('#mcb').onclick=()=>{const L=D[kind],n=L.length,cnt=L.map(()=>Array(n).fill(0)),tot=2000,id=++mcRun,ord=ranks(cc(L,EQ)),g=$('#mcg'),cells=[],p3=[];let done=0;
+g.className='mcg '+kind;g.style.gridTemplateColumns=`minmax(0,var(--lw,170px)) repeat(${n},minmax(0,1fr)) var(--tw,52px)`;g.innerHTML='';
+const idx=L.map((r,i)=>i).sort((a,b)=>ord[a]-ord[b]);
+idx.forEach(i=>{g.append(el('span','',esc(L[i].s)));cells[i]=[];for(let p=0;p<n;p++){const c=el('span','c');cells[i].push(c);g.append(c)}p3[i]=el('b','');g.append(p3[i])});
+function step(){if(id!==mcRun)return;for(let k=0;k<14&&done<tot;k++,done++){const w=[0,1,2,3].map(()=>-Math.log(1-Math.random())),s=w.reduce((a,b)=>a+b,0);ranks(cc(L,w.map(v=>v/s))).forEach((p,i)=>cnt[i][p]++)}
+L.forEach((r,i)=>{cnt[i].forEach((v,p)=>cells[i][p].style.setProperty('--p',v/done*100));p3[i].textContent=Math.round((cnt[i][0]+cnt[i][1]+cnt[i][2])/done*100)+'%'});
+$('#mcp').textContent=done.toLocaleString()+' / 2,000 draws';if(done<tot)requestAnimationFrame(step)}
+step()};
+
+pick('Sceptics');
+</script>
+<script>
+(()=>{const g=s=>document.querySelector(s),hero=g('#hero'),kb=g('#kick'),mu=g('#mute');let snd=true,AC;
+const st=g('.stars');for(let i=0;i<46;i++){const e=document.createElement('i');e.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*70}%;animation-delay:${Math.random()*3}s`;st.append(e)}
+const tk=g('#stk');for(let i=0;i<=10;i++){const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',100);l.setAttribute('x2',100);l.setAttribute('y1',i%2?36:32);l.setAttribute('y2',42);l.setAttribute('transform',`rotate(${-90+i*18} 100 110)`);tk.append(l)}
+const od=g('#odo');for(let i=0;i<4;i++)od.insertAdjacentHTML('beforeend','<span class="dg"><i>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</i></span>');
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){o.disconnect();[...od.querySelectorAll('i')].forEach((d,i)=>setTimeout(()=>d.style.setProperty('--d','0201'[i]),300+i*350));setTimeout(()=>g('#nd').style.transform='rotate(23.4deg)',500)}},{threshold:.2}).observe(g('.shelf'));
+mu.onclick=()=>{snd=!snd;mu.textContent='Sound: '+(snd?'on':'off');mu.setAttribute('aria-pressed',snd)};
+function engine(){if(!snd)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const A=AC,t=A.currentTime,M=A.createGain();M.gain.value=.22;M.connect(A.destination);
+const k=A.createOscillator(),kg=A.createGain();k.frequency.setValueAtTime(140,t);k.frequency.exponentialRampToValueAtTime(40,t+.25);kg.gain.setValueAtTime(.9,t);kg.gain.exponentialRampToValueAtTime(.001,t+.3);k.connect(kg).connect(M);k.start(t);k.stop(t+.35);
+const o=A.createOscillator(),F=A.createBiquadFilter(),P=A.createGain(),L=A.createOscillator(),LG=A.createGain(),E=A.createGain(),b=t+.4;
+o.type='sawtooth';F.type='lowpass';F.frequency.value=520;P.gain.value=.5;LG.gain.value=.5;
+o.frequency.setValueAtTime(38,b);o.frequency.linearRampToValueAtTime(90,b+1.1);o.frequency.linearRampToValueAtTime(52,b+2.6);
+L.frequency.setValueAtTime(6,b);L.frequency.linearRampToValueAtTime(26,b+1.1);L.frequency.linearRampToValueAtTime(10,b+2.6);
+L.connect(LG);LG.connect(P.gain);E.gain.setValueAtTime(0,b);E.gain.linearRampToValueAtTime(1,b+.5);E.gain.setValueAtTime(1,b+2.6);E.gain.linearRampToValueAtTime(0,b+3.6);
+o.connect(F);F.connect(P);P.connect(E);E.connect(M);o.start(b);o.stop(b+3.7);L.start(b);L.stop(b+3.7);
+const v=A.createOscillator(),vg=A.createGain();v.frequency.setValueAtTime(220,t+3.6);v.frequency.exponentialRampToValueAtTime(1100,t+5.6);vg.gain.setValueAtTime(0,t+3.6);vg.gain.linearRampToValueAtTime(.12,t+4.4);vg.gain.linearRampToValueAtTime(0,t+6.4);v.connect(vg);vg.connect(M);v.start(t+3.6);v.stop(t+6.5)}catch(e){}}
+kb.onclick=()=>{kb.disabled=true;hero.classList.add('kick');engine();
+setTimeout(()=>{hero.dataset.m='e';hero.classList.remove('kick')},3400);
+setTimeout(()=>{kb.disabled=false;window.KD=1;window.setL&&setL(window.LI);kb.onclick=()=>g('#framework').scrollIntoView({behavior:'smooth'})},5400)};
+})();
+</script>
+<script>
+(()=>{const g=s=>document.querySelector(s),all=s=>[...document.querySelectorAll(s)],gz=()=>Math.sqrt(-2*Math.log(1-Math.random()))*Math.cos(6.283185307*Math.random());
+const nl=(i,a)=>[`.nav a:nth-of-type(${i})`,null,...a];
+const T=[['.kk',null,'EV2W · NIT Calicut · 201 voices','EV2W · NIT कालीकट · 201 आवाज़ें','EV2W · NIT കോഴിക്കോട് · 201 ശബ്ദങ്ങൾ'],
+['.t-o .hl','Yaad hai woh kick?<br>Woh dhuan, woh awaaz…','Remember that kick?<br>The smoke, the sound…','याद है वो किक?<br>वो धुआँ, वो आवाज़…','ആ കിക്ക് ഓർമ്മയുണ്ടോ?<br>ആ പുക, ആ ശബ്ദം…'],
+['.t-o .sb','Sunday subah. Chai ki bhaap. Papa ka scooter. Phir ek din sab kuch shaant ho gaya.','Sunday mornings. Steam from the tea. Dad’s scooter. Then one day, everything went quiet.','रविवार की सुबह। चाय की भाप। पापा का स्कूटर। फिर एक दिन सब कुछ शांत हो गया।','ഞായറാഴ്ച രാവിലെ. ചായയുടെ ആവി. അച്ഛന്റെ സ്കൂട്ടർ. പിന്നെ ഒരു ദിവസം എല്ലാം നിശ്ശബ്ദമായി.'],
+['.t-e .hl','Ab bas khamoshi.<br>Sawaal ek: pehle kya theek karein?','Now, only silence.<br>One question: what do we fix first?','अब बस खामोशी।<br>सवाल एक: पहले क्या ठीक करें?','ഇപ്പോൾ നിശ്ശബ്ദത മാത്രം.<br>ഒരു ചോദ്യം: ആദ്യം എന്ത് ശരിയാക്കണം?'],
+['.t-e .sb','201 aawazein, 31 baatein, ek roadmap. Electric two-wheelers ko hamari sadkon tak laane ka pehla qadam.','201 voices, 31 statements, one roadmap. The first step to bringing electric two-wheelers to our roads.','201 आवाज़ें, 31 बातें, एक रोडमैप। इलेक्ट्रिक दोपहिया को हमारी सड़कों तक लाने का पहला कदम।','201 ശബ്ദങ്ങൾ, 31 പ്രസ്താവനകൾ, ഒരു വഴികാട്ടി. ഇലക്ട്രിക് ഇരുചക്രവാഹനങ്ങളെ നമ്മുടെ റോഡുകളിലെത്തിക്കാനുള്ള ആദ്യ ചുവട്.'],
+['.shl','Purani yaadon ka shoebox…','A shoebox of old memories…','पुरानी यादों का शूबॉक्स…','പഴയ ഓർമ്മകളുടെ പെട്ടി…'],
+nl(1,['Framework','ढाँचा','ചട്ടക്കൂട്']),nl(2,['Scales','पैमाने','സ്കെയിലുകൾ']),nl(3,['Priorities','प्राथमिकताएँ','മുൻഗണനകൾ']),nl(4,['Segments','समूह','വിഭാഗങ്ങൾ']),nl(5,['Math lab','गणित लैब','ഗണിത ലാബ്']),nl(6,['Limits','सीमाएँ','പരിമിതികൾ']),
+['header h1',null,'What to fix first for electric two-wheelers','इलेक्ट्रिक दोपहिया के लिए पहले क्या ठीक करें','ഇലക്ട്രിക് ഇരുചക്രവാഹനങ്ങൾക്ക് ആദ്യം എന്ത് ശരിയാക്കണം'],
+['header .lede',null,'A decision framework that combines Thurstone scaling, TOPSIS and trust–risk modelling, applied to 201 online survey responses from NIT Calicut. Change the weights, switch blocks and pick a segment to test how firm each finding is.','थर्स्टन स्केलिंग, TOPSIS और भरोसा–जोखिम मॉडल को जोड़ने वाला निर्णय ढाँचा, NIT कालीकट के 201 ऑनलाइन जवाबों पर आधारित। वज़न बदलकर देखें कि हर नतीजा कितना पक्का है।','തർസ്റ്റൺ സ്കെയിലിംഗ്, TOPSIS, വിശ്വാസ–അപകട മോഡൽ എന്നിവ ചേർന്ന തീരുമാന ചട്ടക്കൂട്; NIT കോഴിക്കോടിലെ 201 ഓൺലൈൻ പ്രതികരണങ്ങളെ അടിസ്ഥാനമാക്കി. ഭാരം മാറ്റി ഓരോ കണ്ടെത്തലും എത്ര ഉറച്ചതെന്ന് പരിശോധിക്കൂ.'],
+['.st:nth-child(1) span:last-child',null,'rank purchase cost first among cost barriers','लागत वाली बाधाओं में 63% ने खरीद लागत को पहले रखा','ചെലവ് തടസ്സങ്ങളിൽ 63% പേർ വാങ്ങൽ ചെലവിന് ഒന്നാം സ്ഥാനം നൽകി'],
+['.st:nth-child(2) span:last-child',null,'correlation between trust and perceived risk','भरोसे और जोखिम के बीच सहसंबंध','വിശ്വാസവും അപകടബോധവും തമ്മിലുള്ള സഹബന്ധം'],
+['.st:nth-child(3) span:last-child',null,'top items per list that hold under any weights','हर सूची के शीर्ष आइटम जो किसी भी वज़न में टिकते हैं','ഏത് ഭാരത്തിലും ഉറച്ചുനിൽക്കുന്ന ഓരോ പട്ടികയിലെയും മുൻനിര ഇനങ്ങൾ'],
+['.st:nth-child(4) span:last-child',null,'online responses, half of the 402-person survey','ऑनलाइन जवाब, 402 के सर्वे का आधा','ഓൺലൈൻ പ്രതികരണങ്ങൾ, 402 പേരുടെ സർവേയുടെ പകുതി'],
+['#framework h2',null,'Four steps from rankings to action','रैंकिंग से कार्रवाई तक चार कदम','റാങ്കിങ്ങിൽ നിന്ന് നടപടിയിലേക്ക് നാല് ചുവടുകൾ'],
+['#scales h2',null,'How strongly each statement was preferred','हर कथन को कितना पसंद किया गया','ഓരോ പ്രസ്താവനയ്ക്കും എത്ര മുൻഗണന ലഭിച്ചു'],
+['#priorities h2',null,'Rank the levers and barriers, then stress-test the ranking','कारकों और बाधाओं को रैंक करें, फिर रैंकिंग को परखें','ഘടകങ്ങളെയും തടസ്സങ്ങളെയും റാങ്ക് ചെയ്യൂ, പിന്നെ പരീക്ഷിക്കൂ'],
+['#segments h2',null,'Who is hesitant, and what moves them','कौन झिझक रहा है, और क्या उन्हें आगे बढ़ाता है','ആർക്കാണ് മടി, എന്താണ് അവരെ നീക്കുന്നത്'],
+['#math h2',null,'The math, live','गणित, लाइव','ഗണിതം, തത്സമയം']];
+const K0=['⏻ Kick-start karo','⏻ Kick-start','⏻ किक-स्टार्ट करो','⏻ കിക്ക്-സ്റ്റാർട്ട്'],K1=['Ab findings dekho ↓','See the findings ↓','अब नतीजे देखो ↓','ഇനി കണ്ടെത്തലുകൾ ↓'],LC=['en','en','hi','ml'];window.LI=0;
+window.setL=i=>{window.LI=i;document.documentElement.lang=LC[i];T.forEach(t=>{const v=i?t[i+1]:(t[1]||t[2]);all(t[0]).forEach(e=>e.innerHTML=v)});const k=g('#kick');if(k&&!k.disabled||window.KD)k.textContent=(window.KD?K1:K0)[i];all('.lg button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.l===i))};
+all('.lg button').forEach(b=>b.onclick=()=>setL(+b.dataset.l));
+const fl=all('.fx .ly');addEventListener('scroll',()=>{const y=scrollY;fl[0].style.transform=`translateX(${-(y*.15)%innerWidth}px)`;fl[1].style.transform=`translateX(${-(y*.4)%innerWidth}px)`},{passive:true});
+const P=v=>Math.max(0,Math.min(100,(v+.75)/1.5*100));setInterval(()=>all('#sl .dot').forEach(d=>d.style.left=P(+d.dataset.s+gz()*+d.dataset.sd)+'%'),1000);
+let sw=0;const psw=g('#psw');all('.wi').forEach(i=>i.addEventListener('input',()=>sw=0));
+psw.onclick=()=>{const id=++sw,t0=performance.now(),f=t=>{if(id!==sw)return;const k=(t-t0)/1000;if(k>12)return setW(EQ);setW([0,1,2,3].map(j=>.25+.22*Math.sin(k*.9+j*1.6)));requestAnimationFrame(f)};requestAnimationFrame(f)};
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){o.disconnect();all('.st .big').forEach(b=>{const m=b.textContent.match(/^(−?)([\d.]+)(%?)$/);if(!m)return;const v=+m[2],dc=(m[2].split('.')[1]||'').length,t0=performance.now(),f=t=>{const k=Math.min(1,(t-t0)/1500),e=1-Math.pow(1-k,3);b.textContent=m[1]+(v*e).toFixed(dc)+m[3];if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}},{threshold:.5}).observe(g('.stats'));
+g('#mcp').textContent='Nothing simulated yet. Press the button to start.';
+})();
+</script>
+<script>
+(()=>{const R=matchMedia('(prefers-reduced-motion:reduce)').matches;if(R)return;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('section>h2,.stats .st,.lab>.card,.care').forEach(e=>{e.classList.add('rv');io.observe(e)});
+const hs=document.querySelector('.hs'),pane=hs.querySelector('.hsp'),tr=hs.querySelector('.hst'),bar=hs.querySelector('.hsb i'),cards=[...tr.children],nav=document.querySelector('.nav');let nh=52,ov=0,tk=0;
+const upd=()=>{tk=0;const r=hs.getBoundingClientRect(),span=hs.offsetHeight-pane.offsetHeight,p=span>0?Math.min(1,Math.max(0,(nh-r.top)/span)):0;tr.style.transform=`translateX(${-p*ov}px)`;bar.style.transform=`scaleX(${p})`;cards.forEach(c=>{const b=c.getBoundingClientRect(),d=((b.left+b.width/2)-innerWidth/2)/innerWidth,a=Math.abs(d);const m=innerWidth<=640;c.style.setProperty('--ry',m?'0deg':Math.max(-24,Math.min(24,-d*30))+'deg');c.style.setProperty('--sc',1-Math.min(m?.05:.12,a*.18));c.style.setProperty('--op',m?1:1-Math.min(.5,a*.6))})};
+const size=()=>{nh=nav?nav.offsetHeight:52;document.documentElement.style.setProperty('--nh',nh+'px');const cw=document.documentElement.clientWidth;hs.style.width=cw+'px';hs.style.marginLeft='0';hs.style.marginLeft=-hs.getBoundingClientRect().left+'px';ov=Math.max(0,tr.scrollWidth-cw);hs.style.height=(pane.offsetHeight+ov)+'px';upd()};
+addEventListener('scroll',()=>{if(!tk)tk=requestAnimationFrame(upd)},{passive:true});let lw=innerWidth;addEventListener('resize',()=>{if(innerWidth!==lw){lw=innerWidth;size()}});addEventListener('load',size);document.fonts&&document.fonts.ready.then(size);size();
+})();
+</script>
+<script>
+(()=>{const g=s=>document.querySelector(s),tc=g('#tc'),tb=g('#tourb');let run=0,on=false;
+const sl=ms=>new Promise(r=>setTimeout(r,ms)),nh=()=>g('.nav').offsetHeight,Yt=e=>e.getBoundingClientRect().top+scrollY-nh()-12,click=s=>{const e=g(s);e&&!e.disabled&&e.click()};
+const glide=(y,ms)=>new Promise(res=>{const id=run,y0=scrollY,t0=performance.now(),f=t=>{if(id!==run)return res();const k=Math.min(1,(t-t0)/ms),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;scrollTo({top:y0+(y-y0)*e,behavior:'instant'});k<1?requestAnimationFrame(f):res()};requestAnimationFrame(f)});
+const to=(s,ms)=>glide(Yt(s.nodeType?s:g(s)),ms||1200);
+const S=[
+['The question','201 online survey voices from NIT Calicut, one question: what should we fix first to get electric two-wheelers on the road?',6500,async()=>{await glide(0,800);if(!window.KD)click('#kick')}],
+['Four-step pipeline','Thurstone scaling, then TOPSIS ranking, then respondent segments, then stress tests and action. The cards glide as the page scrolls.',9000,async()=>{await to('#framework',1000);const h=g('.hs'),d=h.getBoundingClientRect().top+scrollY-nh(),sp=h.offsetHeight-h.querySelector('.hsp').offsetHeight;await glide(d+sp,6500)}],
+['Scales','Each dot is a statement’s preference score. It re-draws inside its 95% bootstrap interval, so overlapping items can swap places.',7000,()=>to('#scales')],
+['Priorities','Sweeping the criteria weights live. Items that keep their rank are firm; the ones that jump are not.',9000,async()=>{await to('#priorities');click('#psw')}],
+['Segments','Respondents split into four trust–risk segments. Pick one to see which levers and barriers move it.',6500,()=>to('#segments')],
+['Simulation','Draw simulated respondents for two statements and watch the share converge to the model’s Φ.',8000,async()=>{await to(g('#bell').closest('.card'));click('#simx')}],
+['Monte Carlo','2,000 random weight vectors, re-ranked each time. Darker cells mean that rank is reached more often.',9000,async()=>{await to(g('#mcb').closest('.card'));click('#mcb')}],
+['Limits','Honest limits: there is no adoption-intention question, so adoption is proxied by trust, risk and the choice among three scooters.',6000,()=>to('#care')],
+['Thank you','Built by Md Shafaque, NIT Calicut. Press Ctrl or ⌘ + K anywhere to explore.',5000,()=>glide(document.documentElement.scrollHeight-innerHeight,1800)]];
+function stop(){run++;on=false;tc.classList.remove('on');tb.textContent='▶ Quick Tour'}
+async function tour(){if(on)return stop();on=true;const id=++run;tb.textContent='■ Stop';tc.classList.add('on');
+for(let i=0;i<S.length;i++){if(id!==run)return;const[t,x,ms,a]=S[i],b=g('#tci');g('#tcn').textContent=`${String(i+1).padStart(2,'0')} / ${String(S.length).padStart(2,'0')} · ${t}`;g('#tct').textContent=x;b.style.transition='none';b.style.width='0';b.offsetWidth;b.style.transition=`width ${ms}ms linear`;b.style.width='100%';const t0=Date.now();await a();if(id!==run)return;await sl(Math.max(300,ms-(Date.now()-t0)))}
+if(id===run)stop()}
+['wheel','touchstart','keydown'].forEach(v=>addEventListener(v,e=>{if(on&&!(e.target.closest&&e.target.closest('.tc,.dk')))stop()},{passive:true}));
+g('#tcx').onclick=stop;tb.onclick=tour;
+const sec=[['Framework','#framework'],['Scales','#scales'],['Priorities','#priorities'],['Segments','#segments'],['Math lab','#math'],['Limits','#care']];
+const C=[['Start the Quick Tour (auto-plays the whole story)','▶',tour],['Kick-start the hero','⏻',()=>{scrollTo({top:0,behavior:'smooth'});if(!window.KD)click('#kick')}],...sec.map(s=>['Go to '+s[0],'→',()=>g(s[1]).scrollIntoView({behavior:'smooth'})]),['Run the 2,000-draw Monte Carlo','◎',async()=>{await to(g('#mcb').closest('.card'));click('#mcb')}],['Sweep the weights live','≈',async()=>{await to('#priorities');click('#psw')}],['Toggle light / dark','◐',()=>click('#theme')],['Language: Hinglish','A',()=>click('.lg [data-l="0"]')],['Language: English','A',()=>click('.lg [data-l="1"]')],['Language: हिन्दी','A',()=>click('.lg [data-l="2"]')],['Language: മലയാളം','A',()=>click('.lg [data-l="3"]')],['Back to top','↑',()=>scrollTo({top:0,behavior:'smooth'})]];
+const cm=g('#cm'),ci=g('#ci'),cl=g('#cl');let sel=0,vis=[];
+function render(){const q=ci.value.trim().toLowerCase();vis=C.filter(c=>c[0].toLowerCase().includes(q));sel=Math.min(sel,Math.max(0,vis.length-1));cl.innerHTML=vis.map((c,i)=>`<button role='option' aria-selected='${i===sel}' data-i='${i}'><span>${c[1]}</span>${c[0]}</button>`).join('')||'<p class="mu" style="padding:14px">No match</p>';const a=cl.querySelector('[aria-selected=true]');a&&a.scrollIntoView({block:'nearest'})}
+function open(){cm.classList.add('on');ci.value='';sel=0;render();setTimeout(()=>ci.focus(),30)}
+function close(){cm.classList.remove('on')}
+function runI(i){const c=vis[i];if(!c)return;close();setTimeout(c[2],150)}
+ci.oninput=()=>{sel=0;render()};cl.onclick=e=>{const b=e.target.closest('button');if(b)runI(+b.dataset.i)};cm.onclick=e=>{if(e.target===cm)close()};g('#cmb').onclick=open;
+addEventListener('keydown',e=>{const o=cm.classList.contains('on');if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();o?close():open()}else if(o){if(e.key==='Escape')close();else if(e.key==='ArrowDown'){e.preventDefault();sel=Math.min(vis.length-1,sel+1);render()}else if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(0,sel-1);render()}else if(e.key==='Enter'){e.preventDefault();runI(sel)}}});
+const pg=g('#pg');addEventListener('scroll',()=>{const m=document.documentElement.scrollHeight-innerHeight;pg.style.transform=`scaleX(${m>0?scrollY/m:0})`},{passive:true});
+matchMedia('(hover:hover)').matches&&addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.card,.step');if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}},{passive:true});
+})();
+</script>
+</body></html>
